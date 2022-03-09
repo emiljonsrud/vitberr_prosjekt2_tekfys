@@ -113,4 +113,5 @@ theta_num_rk4 = w_num_rk4[:,0]
 x_C_num_rk4 = w_num_rk4[:,2]
 y_C_num_rk4 = w_num_rk4[:,3]
 h_step = 0.01
+print(t_num_rk4)
 animate_deck_movement(t_num_rk4, theta_num_rk4, x_C_num_rk4 , y_C_num_rk4, stepsize=h_step)
