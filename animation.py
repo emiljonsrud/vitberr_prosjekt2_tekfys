@@ -5,6 +5,8 @@ import matplotlib.pyplot as plt
 from matplotlib import animation
 from tempfile import TemporaryFile
 
+from sqlalchemy import true
+
 
 '''Denne koden animerer bevegelsen til båtet, gitt at dere sender inn arrays som inneholder tidsverdier t,
 skipets helningsvinkel theta, x- og y-koordinatet til skipets massesenter. Disse arraysene brukes i funksjonen
@@ -105,15 +107,16 @@ def animate_deck_movement(t, theta, x_C, y_C, s_L=[], gjerde=False, stepsize=0.0
                                      fargs=(theta_anim, t_anim, x_C_anim, y_C_anim, s_L_anim, gjerde))
     plt.show()
 
-simulation_data = np.load('simulation_data/2d.npz')
-w_num, t_num = simulation_data['w_num_1'], simulation_data['t_num_1']
+simulation_data = np.load('simulation_data/2c.npz')
+w_num, t_num = simulation_data['w_num'], simulation_data['t_num']
 y_num_rk4 = w_num[3]
 omega_num_rk = w_num[1]
 theta_num_rk4 = w_num[0]
 x_C_num_rk4 = w_num[2]
 y_C_num_rk4 = w_num[3]
+s_L_num = w_num[6]
 
 print(len(w_num))
 h_step = 0.01
 print(t_num)
-animate_deck_movement(t_num, theta_num_rk4, x_C_num_rk4 , y_C_num_rk4, stepsize=h_step)
+animate_deck_movement(t_num, theta_num_rk4, x_C_num_rk4 , y_C_num_rk4, stepsize=h_step, s_L=s_L_num,gjerde=True)
