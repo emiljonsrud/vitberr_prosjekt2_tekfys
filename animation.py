@@ -107,7 +107,7 @@ def animate_deck_movement(t, theta, x_C, y_C, s_L=[], gjerde=False, stepsize=0.0
                                      fargs=(theta_anim, t_anim, x_C_anim, y_C_anim, s_L_anim, gjerde))
     plt.show()
 
-simulation_data = np.load('simulation_data/2d.npz')
+simulation_data = np.load('simulation_data/2b.npz')
 w_num, t_num = simulation_data['w_num'], simulation_data['t_num']
 y_num_rk4 = w_num[3]
 omega_num_rk = w_num[1]
